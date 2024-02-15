@@ -1,0 +1,34 @@
+name: Build React App
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Adjust as needed for your React app
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Build application
+      run: npm run build
+
+    - name: Check build status
+      run: |
+        if [ -d "build" ]; then
+          echo "Build successful!"
+        else
+          echo "Build failed! Please check logs for errors."
+          exit 1
+        fi
