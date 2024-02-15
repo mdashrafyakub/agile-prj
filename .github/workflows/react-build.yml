@@ -1,9 +1,7 @@
 name: Build React App
 
 on:
-  push:
-    branches:
-      - main  # Adjust this to your main branch name
+  [push]
 
 jobs:
   build:
